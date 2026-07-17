@@ -32,11 +32,13 @@
     links.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
   }
   toggle.addEventListener('click', function () {
     var open = links.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   $$('#navLinks a').forEach(function (a) { a.addEventListener('click', closeMenu); });
   document.addEventListener('keydown', function (e) {
