@@ -1,0 +1,14 @@
+# macOS / editor cruft
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# temporary screenshot/probe builds
+_shot.html
+_probe.html
+
+# source material — kept locally, not published on the live site
+# (originals are large, and the raw phone screenshots still contain
+#  names/timestamps that the cropped web versions removed)
+photos/
+content/
