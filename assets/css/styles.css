@@ -129,6 +129,14 @@ em{font-style:italic}
   transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);
   padding-block:14px;
 }
+/* scrim behind the transparent (top-of-page) nav so white links + hamburger
+   stay legible over bright areas of the hero photo */
+.nav::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:150px;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(40,18,23,.55),rgba(40,18,23,0));
+  opacity:1;transition:opacity .35s var(--ease);
+}
+.nav.is-scrolled::before{opacity:0}
 .nav__inner{
   width:100%;max-width:1320px;margin-inline:auto;padding-inline:var(--gutter);
   display:flex;align-items:center;justify-content:space-between;gap:20px;
@@ -148,6 +156,8 @@ em{font-style:italic}
   position:relative;transition:background .25s var(--ease),color .25s var(--ease);
   opacity:.92;
 }
+/* extra insurance for the plain links (esp. right-most "Roles") over bright hero */
+.nav:not(.is-scrolled) .nav__links a:not(.nav__cta){text-shadow:0 1px 8px rgba(40,18,23,.45)}
 .nav__links a::after{
   content:"";position:absolute;left:.85em;right:.85em;bottom:.32em;height:2px;
   background:var(--cream);border-radius:2px;transform:scaleX(0);transform-origin:left;
@@ -161,7 +171,8 @@ em{font-style:italic}
 .nav__links a.nav__cta:hover{background:var(--cream-light)}
 
 .nav__toggle{display:none;flex-direction:column;gap:5px;padding:10px;border-radius:10px}
-.nav__toggle span{width:24px;height:2.5px;background:#fff;border-radius:2px;transition:transform .35s var(--ease),opacity .25s var(--ease)}
+.nav__toggle span{width:24px;height:2.5px;background:#fff;border-radius:2px;box-shadow:0 1px 4px rgba(40,18,23,.4);transition:transform .35s var(--ease),opacity .25s var(--ease)}
+.nav.is-scrolled .nav__toggle span{box-shadow:none}
 .nav__toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
 .nav__toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
 .nav__toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
