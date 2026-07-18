@@ -440,12 +440,17 @@ em{font-style:italic}
 .give__cta{display:flex;flex-direction:column;align-items:center;gap:1.1rem;margin-bottom:2.4rem}
 .give__cta .btn{font-size:1.08rem;padding:1em 2.2em;gap:.6em}
 .give__cta .btn svg{width:20px;height:20px}
-.give__hint{display:inline-flex;align-items:center;gap:.6em;max-width:34rem;
-  font-size:.98rem;line-height:1.4;text-align:left;color:var(--cream-light);
-  background:rgba(244,212,164,.12);border:1px solid rgba(244,212,164,.32);
-  padding:.6em 1.1em;border-radius:14px}
-.give__hint svg{width:18px;height:18px;flex:none;color:var(--teal-2)}
-.give__hint strong{color:#fff}
+.give__hint{display:flex;align-items:center;justify-content:center;gap:.85em;
+  max-width:31rem;margin-inline:auto;font-size:1rem;line-height:1.5;text-align:left;
+  color:var(--cream-light);background:rgba(244,212,164,.1);
+  border:1px solid rgba(244,212,164,.3);padding:.9em 1.35em;border-radius:16px}
+.give__hint-icon{width:22px;height:22px;flex:none;color:var(--teal-2)}
+.give__fund{display:inline-block;margin-top:.45em;color:#fff;font-weight:700;
+  white-space:nowrap;background:rgba(244,212,164,.16);padding:.16em .7em;border-radius:8px}
+@media (max-width:560px){
+  .give__hint{flex-direction:column;text-align:center;gap:.7em;padding:1.15em 1.2em}
+  .give__hint-icon{width:26px;height:26px}
+}
 .give__or{font-family:var(--font-sans);font-weight:700;text-transform:uppercase;
   letter-spacing:.14em;font-size:.72rem;color:var(--cream);opacity:.85;margin-bottom:1rem}
 .give__card{background:rgba(255,255,255,.07);border:1px solid rgba(244,212,164,.28);
