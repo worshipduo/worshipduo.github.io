@@ -436,7 +436,18 @@ em{font-style:italic}
   color:var(--cream-light);text-align:center;padding-block:clamp(64px,9vw,120px)}
 .give__inner{max-width:720px;margin-inline:auto}
 .give .h2--light{margin-bottom:1rem}
-.give__lead{color:rgba(251,239,222,.85);font-size:1.12rem;margin-bottom:2rem}
+.give__lead{color:rgba(251,239,222,.85);font-size:1.12rem;margin-bottom:2.2rem}
+.give__cta{display:flex;flex-direction:column;align-items:center;gap:1.1rem;margin-bottom:2.4rem}
+.give__cta .btn{font-size:1.08rem;padding:1em 2.2em;gap:.6em}
+.give__cta .btn svg{width:20px;height:20px}
+.give__hint{display:inline-flex;align-items:center;gap:.6em;max-width:34rem;
+  font-size:.98rem;line-height:1.4;text-align:left;color:var(--cream-light);
+  background:rgba(244,212,164,.12);border:1px solid rgba(244,212,164,.32);
+  padding:.6em 1.1em;border-radius:14px}
+.give__hint svg{width:18px;height:18px;flex:none;color:var(--teal-2)}
+.give__hint strong{color:#fff}
+.give__or{font-family:var(--font-sans);font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;font-size:.72rem;color:var(--cream);opacity:.85;margin-bottom:1rem}
 .give__card{background:rgba(255,255,255,.07);border:1px solid rgba(244,212,164,.28);
   border-radius:var(--radius);padding:26px 28px;margin-bottom:2rem;backdrop-filter:blur(4px)}
 .give__to{font-size:1.1rem;color:var(--cream-light)}
