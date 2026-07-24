@@ -400,11 +400,30 @@ em{font-style:italic}
   padding-block:clamp(56px,8vw,96px)}
 .testimonial__photo{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-lg);
   border:6px solid rgba(244,212,164,.9)}
+.testimonial__photo{display:grid}
 .testimonial__photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.testimonial__slide{grid-area:1/1;display:block;opacity:0;transition:opacity .9s var(--ease)}
+.testimonial__slide.is-active{opacity:1}
 .testimonial__quote p{font-family:var(--font-serif);font-style:italic;font-weight:500;
   font-size:clamp(1.4rem,3vw,2.15rem);line-height:1.34;color:var(--cream);letter-spacing:-.01em}
 .testimonial__quote cite{display:block;margin-top:1.4rem;font-family:var(--font-sans);font-style:normal;
   font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.82rem;color:var(--teal-2)}
+/* rotating quotes: stacked in one grid cell so the box never jumps between slides */
+.testimonial__quotes{display:grid;grid-template-rows:1fr auto;cursor:pointer}
+.testimonial__quotes .testimonial__quote{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(12px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease),visibility 0s linear .9s}
+.testimonial__quotes .testimonial__quote.is-active{opacity:1;visibility:visible;transform:none;
+  transition:opacity .9s var(--ease),transform .9s var(--ease),visibility 0s}
+.testimonial__quote--long p{font-size:clamp(1.05rem,2.1vw,1.55rem);line-height:1.45}
+.testimonial__role{display:block;margin-top:.5rem;max-width:52ch;font-weight:500;letter-spacing:.01em;
+  text-transform:none;font-size:.86rem;line-height:1.5;color:rgba(251,239,222,.72)}
+.testimonial__dots{grid-row:2;display:flex;gap:10px;margin-top:1.8rem}
+.testimonial__dot{width:11px;height:11px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:rgba(251,239,222,.32);transition:background .3s var(--ease),transform .3s var(--ease)}
+.testimonial__dot:hover{background:rgba(251,239,222,.6);transform:scale(1.15)}
+.testimonial__dot.is-active{background:var(--teal-2)}
+.testimonial__dot:focus-visible{outline:3px solid var(--teal-2);outline-offset:3px}
+.testimonial__photo{cursor:pointer}
 
 /* ==========================================================================
    SONGBOOKS

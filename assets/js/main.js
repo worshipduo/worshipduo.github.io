@@ -79,6 +79,67 @@
     gitems.forEach(function (el) { el.classList.add('is-in'); });
   }
 
+  /* ---------- testimonial rotator ---------- */
+  var rotator = $('#testimonialRotator');
+  var photoBox = $('#testimonialPhotos');
+  if (rotator) {
+    var quotes = $$('.testimonial__quote', rotator);
+    var photos = photoBox ? $$('.testimonial__slide', photoBox) : [];
+    var dots = $$('.testimonial__dot', rotator);
+    if (quotes.length > 1) {
+      var qi = 0;
+      var qTimer = null;
+      var Q_DELAY = 10000;
+
+      function setSlide(i, on) {
+        quotes[i].classList.toggle('is-active', on);
+        quotes[i].setAttribute('aria-hidden', on ? 'false' : 'true');
+        if (photos[i]) {
+          photos[i].classList.toggle('is-active', on);
+          photos[i].setAttribute('aria-hidden', on ? 'false' : 'true');
+        }
+        if (dots[i]) {
+          dots[i].classList.toggle('is-active', on);
+          dots[i].setAttribute('aria-current', on ? 'true' : 'false');
+        }
+      }
+      function goTo(i) {
+        i = (i + quotes.length) % quotes.length; // wraps back to the first
+        if (i === qi) return;
+        setSlide(qi, false);
+        qi = i;
+        setSlide(qi, true);
+      }
+      function startQ() {
+        stopQ();
+        qTimer = setInterval(function () {
+          if (!document.hidden) goTo(qi + 1);
+        }, Q_DELAY);
+      }
+      function stopQ() { if (qTimer) { clearInterval(qTimer); qTimer = null; } }
+      function advance(i) { goTo(i); startQ(); } // manual pick restarts the countdown
+
+      quotes.forEach(function (q, i) { setSlide(i, i === 0); });
+      startQ();
+
+      dots.forEach(function (d, i) {
+        d.addEventListener('click', function (e) { e.stopPropagation(); advance(i); });
+      });
+      [rotator, photoBox].forEach(function (el) {
+        if (!el) return;
+        el.addEventListener('click', function (e) {
+          if (e.target.closest && e.target.closest('.testimonial__dot')) return;
+          advance(qi + 1);
+        });
+        // don't yank the quote away mid-sentence
+        el.addEventListener('mouseenter', stopQ);
+        el.addEventListener('mouseleave', startQ);
+        el.addEventListener('focusin', stopQ);
+        el.addEventListener('focusout', startQ);
+      });
+    }
+  }
+
   /* ---------- scrollspy (active nav link) ---------- */
   var sections = ['about', 'concerts', 'gallery', 'involved', 'roles', 'give']
     .map(function (id) { return document.getElementById(id); })
